@@ -88,7 +88,6 @@ namespace CatHand4V
         private const int KEYEVENTF_KEYUP = 0x2;
         private const int KEYEVENTF_EXTENDEDKEY = 0x1;
 
-        private IntPtr vrcWindowHandle = default;
         private INPUT[] inputs = new INPUT[4];
 
         public MainWindow()
@@ -131,19 +130,15 @@ namespace CatHand4V
 
         private void mainButton_Click(object sender, RoutedEventArgs e)
         {
-            foreach (System.Diagnostics.Process p in System.Diagnostics.Process.GetProcesses())
-            {
-                if (p.MainWindowTitle.IndexOf("VRChat") >= 0)
-                {
-                    vrcWindowHandle = p.MainWindowHandle;
-                }
-            }
+            var processes = Process.GetProcessesByName("VRChat");
 
-            if (vrcWindowHandle == default)
+            if (!processes.Any())
             {
                 MessageBox.Show("先にVRChatを起動してください。", "エラー", MessageBoxButton.OK, MessageBoxImage.Exclamation);
-                //this.Close();
+                return;
             }
+
+            var vrcWindowHandle = processes[0].MainWindowHandle;
 
             SetForegroundWindow(vrcWindowHandle);
             SendInput(inputs.Length, inputs, Marshal.SizeOf(inputs[0]));

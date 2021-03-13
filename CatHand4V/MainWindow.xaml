@@ -8,6 +8,10 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="480" Width="640">
     <Grid>
-        <Button x:Name="mainButton" Content="Ctrl + \" Margin="20,20,260.333,19.667" Click="mainButton_Click" />
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="19*"/>
+            <ColumnDefinition Width="298*"/>
+        </Grid.ColumnDefinitions>
+        <Button x:Name="mainButton" Content="Ctrl + \" Margin="10" Click="mainButton_Click" Grid.ColumnSpan="2" />
     </Grid>
 </Window>

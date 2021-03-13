@@ -95,20 +95,6 @@ namespace CatHand4V
         {
             InitializeComponent();
 
-            foreach (System.Diagnostics.Process p in System.Diagnostics.Process.GetProcesses())
-            {
-                if (p.MainWindowTitle.IndexOf("VRChat") >= 0)
-                {
-                    vrcWindowHandle = p.MainWindowHandle;
-                }
-            }
-
-            if (vrcWindowHandle == default)
-            {
-                MessageBox.Show("先にVRChatを起動してください。", "エラー", MessageBoxButton.OK, MessageBoxImage.Exclamation);
-                //this.Close();
-            }
-
             inputs[0] = new INPUT();
             inputs[0].type = 1;
             inputs[0].ui.keyboard.wVk = 0xA2;
@@ -145,9 +131,22 @@ namespace CatHand4V
 
         private void mainButton_Click(object sender, RoutedEventArgs e)
         {
+            foreach (System.Diagnostics.Process p in System.Diagnostics.Process.GetProcesses())
+            {
+                if (p.MainWindowTitle.IndexOf("VRChat") >= 0)
+                {
+                    vrcWindowHandle = p.MainWindowHandle;
+                }
+            }
+
+            if (vrcWindowHandle == default)
+            {
+                MessageBox.Show("先にVRChatを起動してください。", "エラー", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                //this.Close();
+            }
+
             SetForegroundWindow(vrcWindowHandle);
             SendInput(inputs.Length, inputs, Marshal.SizeOf(inputs[0]));
         }
-
     }
 }

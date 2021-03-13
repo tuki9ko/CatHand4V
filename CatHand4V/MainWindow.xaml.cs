@@ -88,13 +88,12 @@ namespace CatHand4V
         private const int KEYEVENTF_KEYUP = 0x2;
         private const int KEYEVENTF_EXTENDEDKEY = 0x1;
 
-        private INPUT[] inputs = new INPUT[4];
+        private readonly INPUT[] inputs = new INPUT[4];
 
         public MainWindow()
         {
             InitializeComponent();
 
-            inputs[0] = new INPUT();
             inputs[0].type = 1;
             inputs[0].ui.keyboard.wVk = 0xA2;
             inputs[0].ui.keyboard.wScan = (short)MapVirtualKey((int)0xA2, 0);
@@ -102,7 +101,6 @@ namespace CatHand4V
             inputs[0].ui.keyboard.time = 0;
             inputs[0].ui.keyboard.dwExtraInfo = IntPtr.Zero;
 
-            inputs[1] = new INPUT();
             inputs[1].type = 1;
             inputs[1].ui.keyboard.wVk = 0xDC;
             inputs[1].ui.keyboard.wScan = (short)MapVirtualKey((int)0xDC, 0);
@@ -110,7 +108,6 @@ namespace CatHand4V
             inputs[1].ui.keyboard.time = 0;
             inputs[1].ui.keyboard.dwExtraInfo = IntPtr.Zero;
 
-            inputs[2] = new INPUT();
             inputs[2].type = 1;
             inputs[2].ui.keyboard.wVk = 0xA2;
             inputs[2].ui.keyboard.wScan = (short)MapVirtualKey((int)0xA2, 0);
@@ -118,14 +115,12 @@ namespace CatHand4V
             inputs[2].ui.keyboard.time = 0;
             inputs[2].ui.keyboard.dwExtraInfo = IntPtr.Zero;
 
-            inputs[3] = new INPUT();
             inputs[3].type = 1;
             inputs[3].ui.keyboard.wVk = 0xDC;
             inputs[3].ui.keyboard.wScan = (short)MapVirtualKey((int)0xDC, 0);
             inputs[3].ui.keyboard.dwFlags = KEYEVENTF_KEYUP;
             inputs[3].ui.keyboard.time = 0;
             inputs[3].ui.keyboard.dwExtraInfo = IntPtr.Zero;
-
         }
 
         private void mainButton_Click(object sender, RoutedEventArgs e)

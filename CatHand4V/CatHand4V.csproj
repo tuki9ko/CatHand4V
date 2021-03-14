@@ -55,6 +55,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Wrappers\User32\DwFlags.cs" />
+    <Compile Include="Wrappers\User32\Structs\HARDWAREINPUT.cs" />
+    <Compile Include="Wrappers\User32\Structs\INPUT.cs" />
+    <Compile Include="Wrappers\User32\Structs\INPUT_UNION.cs" />
+    <Compile Include="Wrappers\User32\Structs\KEYBDINPUT.cs" />
+    <Compile Include="Wrappers\User32\Structs\MOUSEINPUT.cs" />
+    <Compile Include="Wrappers\User32\Type.cs" />
+    <Compile Include="Wrappers\User32\User32Util.cs" />
+    <Compile Include="Wrappers\User32\User32Wrapper.cs" />
+    <Compile Include="Wrappers\User32\VirtualKeyCode.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
